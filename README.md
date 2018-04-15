@@ -1,0 +1,2 @@
+# Ethereum-SmartContract
+Lottery Contract
