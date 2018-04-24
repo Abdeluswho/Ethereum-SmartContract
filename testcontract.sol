@@ -4,10 +4,16 @@ contract Coursetro {
     
    string fName;
    uint age;
+//setting an event listener for an automated refresh
+   event Instructor(
+        string name,
+        uint age
+    );
    
    function setInstructor(string _fName, uint _age) public {
        fName = _fName;
        age = _age;
+       Instructor(_fName, _age);
    }
    
    function getInstructor() public constant returns (string, uint) {
