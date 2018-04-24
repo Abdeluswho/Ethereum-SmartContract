@@ -80,6 +80,12 @@
             "type": "function"
         },
         {
+            "inputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
             "constant": true,
             "inputs": [],
             "name": "getInstructor",
@@ -100,7 +106,7 @@
     ])
 
 
-         var Coursetro = CoursetroContract.at('0x74bc6c9f0e6bea2b472587c9aad0e6baa695a345')
+         var Coursetro = CoursetroContract.at('0xf21b722e9b3c4063f73910e65706c352c591c1c5')
         
          var instructorEvent = Coursetro.Instructor();
 
@@ -117,8 +123,14 @@
         
 
         $("#button").click(() => {
-            Coursetro.setInstructor($("#name").val(), $("#age").val());
             $("#loader").show();
+            Coursetro.setInstructor($("#name").val(), $("#age").val(), (err, res) => {
+                if (err) {
+                    $('#loader').hide();
+                    console.log('access denied to edit the contract');
+                }
+            });
+            
         })
 
     </script>
